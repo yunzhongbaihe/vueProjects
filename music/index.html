@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="referrer" content="no-referrer" />
+  <title>music</title>
+  <link rel="stylesheet" href="/static/css/index.css">
+  <script type="text/javascript" id="getSongsData"></script>
+  <script type="text/javascript" src="https://www.jfh.com/js/lib/biz.jquery.js"></script>
+  <!-- rem -->
+  <script type="text/javascript">
+    ~function(){
+      var computed = function(){
+        var winW = document.documentElement.clientWidth;
+        var value = winW < 640 ? winW / 640 * 100 : 100;
+        document.documentElement.style.fontSize = value + 'px';
+      };
+      computed();
+      window.addEventListener('resize', computed);
+    }();
+  </script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>
