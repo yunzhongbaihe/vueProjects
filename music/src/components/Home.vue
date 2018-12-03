@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <SongClassify></SongClassify>
+    <SongClassify @listenSongClassify="showFromSongClassify" :song-type="songType"></SongClassify>
     <SongList :song-list="songList"></SongList>
   </div>
 </template>
@@ -20,13 +20,16 @@
       }
     },
     mounted(){
+      $('html, body, #app').css({
+        width: 'auto', height: 'auto', overflow: 'scroll'
+      });
       this.getSongList();
     },
     methods: {
       Server: function(params, keyname, varname){
         var _this = this;
         $.ajax({
-          url: `http://tingapi.ting.baidu.com/v1/restserver/ting`,
+          url: this.HOME,
           type: 'get',
           data: params,
           cache: false,
@@ -40,10 +43,14 @@
       getSongList: function(){
         this.Server({
           "method": "baidu.ting.billboard.billList",
-          "type": 1,
+          "type": this.songType,
           "size": 20,
           "offset": 0
         }, 'song_list', 'songList');
+      },
+      showFromSongClassify: function(data){
+        this.songType = data;
+        this.getSongList();
       }
     },
     components: {

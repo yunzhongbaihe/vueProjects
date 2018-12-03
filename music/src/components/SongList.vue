@@ -2,7 +2,9 @@
   <div class="song-list">
     <ul>
       <li v-for="item in songList" :key="item.song_id">
-        {{item.title.replace(/[（）《》]/ig, '')}} {{item.author}}
+        <router-link :to="{path: '/main/play', query: {songId: item.song_id}}">{{item.title.replace(/[（）《》]/ig, '')}}
+          {{item.author}}
+        </router-link>
       </li>
     </ul>
   </div>

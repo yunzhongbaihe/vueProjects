@@ -1,8 +1,8 @@
 <template>
   <div class="song-classify">
     <ul>
-      <li v-for="item in list" :key="item.type">
-        <a href="javascript:void(0);" class="">{{item.text}}</a>
+      <li v-for="item in list" :key="item.type" :class="{'active':Number(songType) === item.type}">
+        <a href="javascript:void(0);" @click="sendTypeToHome(item.type)">{{item.text}}</a>
       </li>
     </ul>
   </div>
@@ -10,6 +10,7 @@
 
 <script>
   export default {
+    props: ['songType'],
     name: "SongClassify",
     data: function(){
       return {
@@ -55,6 +56,11 @@
             text: '网络歌曲'
           }
         ]
+      }
+    },
+    methods: {
+      sendTypeToHome: function(type){
+        this.$emit('listenSongClassify', type);
       }
     }
   }

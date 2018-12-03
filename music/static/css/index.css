@@ -33,22 +33,22 @@ ul li {
 
 /* song-classify */
 .song-classify {
-  background-color: #C20C0C;
+  background-color: #F56C6C;
   border-bottom: 1px solid #C20C0C;
   overflow: hidden;
 }
 
-.song-classify ul {
-
-
-}
-
 .song-classify li {
   float: left;
-  width: 20%;
-  font-size: 0.24rem;
+  width: 25%;
+  font-size: 0.32rem;
   text-align: center;
   line-height: 0.48rem;
+}
+
+.song-classify li.active a {
+  color: #C20C0C;
+  font-weight: bold;
 }
 
 .song-classify a {
@@ -65,14 +65,10 @@ ul li {
 }
 
 /* song-list */
-.song-list {
-
-}
-
 .song-list li {
   padding: 0 0.1rem;
-  line-height: 0.6rem;
-  font-size: 0.24rem;
+  line-height: 0.8rem;
+  font-size: 0.3rem;
   white-space: nowrap;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
@@ -125,4 +121,52 @@ ul li {
 
 .bottom-nav .search.active {
   background-image: url("../images/icon-search-active.png");
+}
+
+/* Song-play */
+.song-play {
+  position: relative;
+  height: 100%;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.song-play .top {
+  padding: 0 0.2rem;
+  height: 0.7rem;
+  line-height: 0.7rem;
+  font-size: 0.3rem;
+  text-align: center;
+  background-color: #e5e5e5;
+}
+
+.song-play a {
+  float: left;
+  font-size: 0.7rem;
+}
+
+.song-play .lrc-list-wrap {
+  height: 10.2rem;
+  overflow: hidden;
+}
+
+.song-play .lrc-list {
+  transition: all .3s linear;
+}
+
+.song-play li {
+  padding: 0 0.1rem;
+  font-size: 0.3rem;
+  line-height: 0.6rem;
+  text-align: center;
+  transition: all .3s linear;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.song-play li.active {
+  color: #C20C0C;
+  font-weight: bold;
 }
