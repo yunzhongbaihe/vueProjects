@@ -4,7 +4,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.prototype.HOME = 'http://tingapi.ting.baidu.com/v1/restserver/ting';
+Vue.prototype.HOME = 'https://tingapi.ting.baidu.com/v1/restserver/ting';
 
 Vue.use(ElementUI);
 
