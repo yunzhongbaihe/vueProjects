@@ -215,3 +215,8 @@ body {
   background-size: 100%;
   z-index: 10;
 }
+
+.song-play .mui-table-view:before,
+.song-play .mui-table-view:after {
+  display: none;
+}
