@@ -37,17 +37,13 @@ export default new Router({
           meta: {
             keepAlive: false
           }
+        },
+        {
+          path: '/main/play',
+          name: 'songPlay',
+          component: SongPlay
         }
       ]
-    },
-    {
-      path: '/play',
-      redirect: '/main/play'
-    },
-    {
-      path: '/main/play',
-      name: 'songPlay',
-      component: SongPlay
     }
   ]
 })

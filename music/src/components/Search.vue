@@ -1,5 +1,7 @@
 <template>
-  <div class="song-search">search</div>
+  <div class="song-search">
+    <div class="music-none"></div>
+  </div>
 </template>
 
 <script>

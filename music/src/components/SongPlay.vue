@@ -1,16 +1,20 @@
 <template>
   <div class="song-play">
-    <div class="top">
-      <router-link to="/main/home" class="el-icon-arrow-left"></router-link>
-      <span>{{title}}</span>
+    <div class="header nav">
+      <div class="back">
+        <router-link to="/main/home" class="icon icon-back"></router-link>
+      </div>
+      <h1 class="title">{{title}}</h1>
     </div>
-    <div class="lrc-list-wrap">
-      <ul id="lrcList" class="lrc-list" :style="{'transform': 'translateY('+translatey + 'rem)'}">
-        <li v-for="item in lrcList" :data-minutes="item.minutes"
-            :data-seconds="item.seconds">{{item.text}}
+    <div class="lrc-list-wrap" v-if="lrcList.length">
+      <ul id="lrcList" class="mui-table-view" :style="{'transform': 'translateY('+translatey + 'rem)'}">
+        <li class="mui-table-view-cell" v-for="item in lrcList" :data-minutes="item.minutes"
+            :data-seconds="item.seconds">
+          <span>{{item.text}}</span>
         </li>
       </ul>
     </div>
+    <div class="music-none" v-if="!lrcList.length"></div>
   </div>
 </template>
 
@@ -26,10 +30,24 @@
         translatey: 0
       }
     },
-    mounted: function(){
-      this.getLrc();
-      $('html, body, #app').css({
-        width: '100%', height: '100%', overflow: 'hidden'
+    /**
+     * 进入路由之前触发
+     * @param to：目标路由
+     * @param from：来自路由
+     * @param next：函数，形参 vm
+     */
+    beforeRouteEnter: function(to, from, next){
+      // 传值形式
+      // this.$router.push({name: 'dispatch', params: {paicheNo: obj.paicheNo}});
+      // this.$router.push({path: '/transport/dispatch', query: {paicheNo: obj.paicheNo}});
+      next(function(vm){
+        if(vm.$route.query && vm.$route.query['songId']){
+          vm.getLrc();
+        }else{
+          mui.alert('请点击首页中歌曲的列表进行播放！', '提示', '确定', function(){
+            vm.$router.push({path: '/main/home', query: {msg: '来自播放页面的提示'}});
+          });
+        }
       });
     },
     methods: {
@@ -46,7 +64,7 @@
           async: false,
           dataType: 'jsonp',
           success: function(data){
-            _this.title = data['title'];
+            _this.title = data['title'].replace(/[（）《》]/ig, '');
             _this.lrcContent = data['lrcContent'];
             _this.getSongPlaySrc();
             _this.handlerLrc();
@@ -114,8 +132,8 @@
         var curLi = liList.filter(`[data-minutes="${minutes}"]`).filter(`[data-seconds="${seconds}"]`);
         if(curLi.length){
           curLi.addClass('active').siblings().removeClass('active');
-          if(curLi.index() >= 8){
-            this.translatey -= 0.6;
+          if(curLi.index() >= 5){
+            this.translatey -= 0.86;
           }
         }
       }

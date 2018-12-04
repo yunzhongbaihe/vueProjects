@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div id="homePage" class="home-page">
     <SongClassify @listenSongClassify="showFromSongClassify" :song-type="songType"></SongClassify>
     <SongList :song-list="songList"></SongList>
   </div>
@@ -20,9 +20,6 @@
       }
     },
     mounted(){
-      $('html, body, #app').css({
-        width: 'auto', height: 'auto', overflow: 'scroll'
-      });
       this.getSongList();
     },
     methods: {

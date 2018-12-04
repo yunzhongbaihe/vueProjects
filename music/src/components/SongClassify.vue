@@ -1,8 +1,12 @@
 <template>
   <div class="song-classify">
-    <ul>
-      <li v-for="item in list" :key="item.type" :class="{'active':Number(songType) === item.type}">
-        <a href="javascript:void(0);" @click="sendTypeToHome(item.type)">{{item.text}}</a>
+    <ul class="mui-table-view mui-grid-view mui-grid-9">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"
+          v-for="item in list" :key="item.type" :class="{'mui-active':Number(songType === item.type)}"
+          @click="sendTypeToHome(item.type)">
+        <a href="javascript:void(0);">
+          <div class="mui-media-body">{{item.text}}</div>
+        </a>
       </li>
     </ul>
   </div>

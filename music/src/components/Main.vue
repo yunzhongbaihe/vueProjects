@@ -1,6 +1,6 @@
 <!-- 主承载页面 -->
 <template>
-  <div class="main-page">
+  <div id="mainPage" class="main-page mui-content">
     <router-view/>
   </div>
 </template>
